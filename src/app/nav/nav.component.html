@@ -1,1 +1,31 @@
-<p>nav works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+        <a class="navbar-brand text-uppercase" href="#">Logge</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Start</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='productpage' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Produkter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='about' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Om oss</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontakta oss</a>
+                </li>
+                <li class="nav-item ml-lg-5">
+                    <a href=""><i class="nav-link material-icons-outlined">account_circle</i></a>
+                </li>
+                <li class="nav-item">
+                    <a href=""><i class="nav-link material-icons-outlined">shopping_cart</i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
