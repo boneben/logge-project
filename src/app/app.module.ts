@@ -15,6 +15,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
