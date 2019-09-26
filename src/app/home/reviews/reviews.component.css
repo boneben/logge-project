@@ -1,0 +1,52 @@
+.heading {margin-top: 2.5rem}
+
+.carousel {
+	margin: 50px auto;
+	padding: 0 0px;
+}
+.carousel .item {
+	color: #999;
+	overflow: hidden;
+    min-height: 130px;
+    font-size: 13px;
+
+}
+.carousel .media img {
+	width: 90px;
+	height: 90px;
+	display: block;
+	border-radius: 50%;
+}
+.carousel .testimonial {
+	padding: 0 15px 0 0px ;
+    position: relative;
+    
+}
+.carousel .overview b {
+	text-transform: uppercase;
+    color: #777;
+    
+}
+.carousel .carousel-indicators {
+    bottom: -60px;
+    
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 18px;
+    height: 18px;
+	border-radius: 50%;
+    margin: 1px 3px;
+    
+}
+.carousel-indicators li {	
+    background: #e2e2e2;
+    border: 4px solid #fff;
+  
+}
+.carousel-indicators li.active {
+	color: #fff;
+    background: #000;    
+    border: 5px double;    
+}
+
+
