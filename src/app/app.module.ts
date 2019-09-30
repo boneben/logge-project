@@ -14,6 +14,14 @@ import { ProductpageComponent } from './productpage/productpage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AspenComponent } from './productpage/logs/aspen/aspen.component';
+import { AspenxlComponent } from './productpage/logs/aspenxl/aspenxl.component';
+import { BirchComponent } from './productpage/logs/birch/birch.component';
+import { BirchxlComponent } from './productpage/logs/birchxl/birchxl.component';
+import { OakComponent } from './productpage/logs/oak/oak.component';
+import { OakxlComponent } from './productpage/logs/oakxl/oakxl.component';
+import { PineComponent } from './productpage/logs/pine/pine.component';
+import { PinexlComponent } from './productpage/logs/pinexl/pinexl.component';
 
 
 @NgModule({
@@ -29,7 +37,15 @@ import { ProfileComponent } from './profile/profile.component';
     ProductpageComponent,
     CheckoutComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    AspenComponent,
+    AspenxlComponent,
+    BirchComponent,
+    BirchxlComponent,
+    OakComponent,
+    OakxlComponent,
+    PineComponent,
+    PinexlComponent
   ],
   imports: [
     BrowserModule,
