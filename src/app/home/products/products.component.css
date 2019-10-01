@@ -1,1 +1,21 @@
-.heading {margin-bottom: 2.5rem}
+.heading {margin-bottom: 2.5rem;
+z-index: 1;}
+#productsWrap{
+    z-index: 1;
+
+    
+    /* background-color: #E0E0E0; */
+    background: linear-gradient(
+    to bottom,
+    #E0E0E0,
+    #52604557,
+    #F6F8F9
+  ),url("../../../assets/img/textures/white_paperboard.png");
+}
+
+#logiconArea{
+    position: Absolute;
+    left: -230px;
+    top: 0px;
+    z-index: 0;
+}

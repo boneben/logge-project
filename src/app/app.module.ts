@@ -14,6 +14,7 @@ import { ProductpageComponent } from './productpage/productpage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ContactComponent } from './home/contact/contact.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     ProductpageComponent,
     CheckoutComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
