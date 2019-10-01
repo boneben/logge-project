@@ -5,3 +5,36 @@ a {
 .footer-icons {
     font-size: 3rem;
 }
+
+.productpage-img {
+    width: 400px;
+    height: 400px;
+}
+
+@media (max-width: 992px) {
+    .productpage-img {
+        width: 350px;
+        height: 350px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .productpage-img {
+        width: 350px;
+        height: 350px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .productpage-img {
+        width: 300px;
+        height: 300px;
+        
+    }
+
+    .btn-productpage {
+        margin-top: 20px;
+    }
+}
