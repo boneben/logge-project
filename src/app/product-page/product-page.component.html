@@ -1,0 +1,32 @@
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2 class="heading">Our Products</h2>
+            </div>
+            <div class="row mb-4">
+                <div class="col-2 ml-auto">
+                    <select (change)="sortProducts($event)" class="custom-select">
+                        <option selected>Sort by</option>
+                        <option value="1">Name</option>
+                        <option value="2">Price (Ascending)</option>
+                        <option value="3">Price (Descending)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div *ngFor="let product of products" class="col-md-4 col-lg-3">
+                    <div class="card mb-4 pt-3">
+                        <img width="100%" src={{product.img}} alt="Image not found">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ product.name }}</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, quod?</p>
+                            <p>Price: ${{ product.price }}</p>
+                            <a class="btn btn-primary" [routerLink]="['/productpage', product._id]">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
