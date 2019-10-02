@@ -11,6 +11,7 @@ import { OakComponent } from './productpage/logs/oak/oak.component';
 import { OakxlComponent } from './productpage/logs/oakxl/oakxl.component';
 import { PineComponent } from './productpage/logs/pine/pine.component';
 import { PinexlComponent } from './productpage/logs/pinexl/pinexl.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'oak', component: OakComponent },
   { path: 'oakxl', component: OakxlComponent },
   { path: 'pine', component: PineComponent },
-  { path: 'pinexl', component: PinexlComponent }
+  { path: 'pinexl', component: PinexlComponent },
+  { path: 'profile', component:ProfileComponent }
 ];
 
 @NgModule({

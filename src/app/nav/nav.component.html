@@ -26,6 +26,9 @@
                     <a href=""  data-toggle="modal" data-target="#modalCart"><i class="nav-link material-icons-outlined">shopping_cart</i></a>
                 </li>
             </ul>
+            <div>
+              <span id="logout" style="float: right" (click)="logout()"> Logout <i class="fas fa-sign-out-alt"></i></span>
+            </div>
         </div>
     </div>
 </nav>
@@ -37,72 +40,114 @@
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Logga in</h4>
+          <h3 class="modal-title">Login</h3>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
   
         <!-- Modal body -->
         <div class="modal-body">
                 
-                <form action="account.html" class="needs-validation" novalidate>
+                <form class="needs-validation" [formGroup]="loginForm" (submit)="login()" novalidate>
                         <div class="form-group">
                           <label for="exampleInputEmail1">E-post</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-post" required>
+                          <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-post" required>
                           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Lösenord</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Lösenord" required>
+                          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Lösenord" required>
                         </div>
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
                           <label class="form-check-label" for="exampleCheck1">Kom ihåg mig</label>
                         </div>
                        
-                        <button type="submit" class="btn btn-primary mt-3 bt-login">Logga in</button> <span style="display: inline"><p class="mt-3">Är du ny kund ? <a  data-toggle="collapse" href="#signIn" role="button" aria-expanded="false" aria-controls="signIn"> Registrera dig nu</a> eller <a href="#"> glömt lösenordet? </a></p></span>
+                        <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary mt-3 bt-login">Logga in</button> <span style="display: inline"><p class="mt-3">Är du ny kund ? <a  data-toggle="collapse" href="#signIn" role="button" aria-expanded="false" aria-controls="signIn"> Registrera dig nu</a> eller <a href="#"> glömt lösenordet? </a></p></span>
+                        <div *ngIf="incorrectCreds" class="warning">Wrong email or password!</div>
                 </form>
                   <!-- Registration -->
                 
               <div Class="collapse" id="signIn">
-                        <h4 class="modal-title pb-3">Registrera</h4>
-                        <form class="needs-validation" novalidate>
+                        <h3 class="modal-title pb-3">Register</h3>
+                        <form [formGroup]="signupForm" (submit)="signup()" class="needs-validation" novalidate>
+                          <h5>User Information</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputEmail4">E-post</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" required>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" formControlName="email" required>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputPassword4">Lösenord</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" required>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" formControlName="password" required>
                                   </div>
                                 </div>
                                 <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="birthdate">Date of birth</label>
+                                    <input type="date" class="form-control" formControlName="birthDate">
+                                  </div>
+                                </div>
+
+                                <h5>Billing address</h5>
+                                <div class="form-row">
                                 <div class="form-group col-md-6 ">
                                   <label for="inputAddress">Adress</label>
-                                  <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="billingAddress" required>
                                 </div>
-                                
-                                
-                                <div class="form-group col-md-6">
-                                  <label for="inputAddress2">Adress 2</label>
-                                  <input type="text" class="form-control" id="inputAddress2" placeholder="Adress 2" required>
-                                </div>
+                                          
                             </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">Stad</label>
-                                    <input type="text" class="form-control" id="inputCity" required>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="billingCity" required>
                                   </div>
                                   <div class="form-group col-md-4">
-                                    <label for="inputState">Ort</label>
-                                    <select id="inputState" class="form-control" required>
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="billingCountry" required>
                                         <option value=""></option>
-                                        <option value="volvo">Stockholm</option>
+                                        <option value="volvo">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
                                     <label for="inputZip">Postadress</label>
-                                    <input type="text" class="form-control" id="inputZip" required>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="billingPostalNumber" required>
+                                  </div>
+                                </div>
+
+                                <h5>Shipping address</h5>
+                                <div class="form-row">
+                                <div class="form-group col-md-6 ">
+                                  <label for="inputAddress">Adress</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="shippingAddress" required>
+                                </div>
+                                
+                            </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">Stad</label>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="shippingCity" required>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="shippingCountry" required>
+                                        <option value=""></option>
+                                        <option value="volvo">Sweden</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Postadress</label>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="shippingPostalNumber" required>
                                   </div>
                                 </div>
                                 <div class="form-group">
@@ -113,7 +158,10 @@
                                     </label>
                                   </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary bt-login">Registrera</button>
+                                <button type="submit" class="btn btn-primary bt-login" [disabled]="!signupForm.valid">Register</button>
+                                <div *ngIf="error" class="warning">
+                                    An account with that emailaddress already exists.
+                                </div>
                               </form>
               </div>
               <!-- Registration End -->                     
