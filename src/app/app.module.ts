@@ -13,18 +13,12 @@ import { ReviewsComponent } from './home/reviews/reviews.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
-import { ProductpageComponent } from './productpage/productpage.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AspenComponent } from './productpage/logs/aspen/aspen.component';
-import { AspenxlComponent } from './productpage/logs/aspenxl/aspenxl.component';
-import { BirchComponent } from './productpage/logs/birch/birch.component';
-import { BirchxlComponent } from './productpage/logs/birchxl/birchxl.component';
-import { OakComponent } from './productpage/logs/oak/oak.component';
-import { OakxlComponent } from './productpage/logs/oakxl/oakxl.component';
-import { PineComponent } from './productpage/logs/pine/pine.component';
-import { PinexlComponent } from './productpage/logs/pinexl/pinexl.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+
 
 
 @NgModule({
@@ -37,18 +31,11 @@ import { PinexlComponent } from './productpage/logs/pinexl/pinexl.component';
     NavComponent,
     FooterComponent,
     AboutComponent,
-    ProductpageComponent,
+    ProductPageComponent,
     CheckoutComponent,
     HomeComponent,
     ProfileComponent,
-    AspenComponent,
-    AspenxlComponent,
-    BirchComponent,
-    BirchxlComponent,
-    OakComponent,
-    OakxlComponent,
-    PineComponent,
-    PinexlComponent
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
