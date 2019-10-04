@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
+import { element, $ } from 'protractor';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -53,9 +53,6 @@ export class NavComponent implements OnInit {
       'shippingCountry': ['', Validators.required]
     })
 
-    if( this._auth.isLoggedIn() ) {
-      this.router.navigateByUrl('profile');
-    }
   }
 
   login() {
@@ -68,7 +65,7 @@ export class NavComponent implements OnInit {
     this._auth.login(this.loginForm.value)
       .subscribe((res) => {
         localStorage.setItem("ACCESS_TOKEN", res["token"]);
-        localStorage.setItem("USER_ID", res["id"]);
+        localStorage.setItem("USER_ID", res["userId"]);
         localStorage.setItem("USER_EMAIL", res["email"]);
 
         if(res["success"]) {
@@ -88,7 +85,18 @@ export class NavComponent implements OnInit {
 
     this._auth.signup(this.signupForm.value).subscribe((registerres) => {
       if(registerres["success"]) {
-            this.router.navigateByUrl('profile');  
+        this._auth.login(this.loginForm.value)
+        .subscribe((res) => {
+          localStorage.setItem("ACCESS_TOKEN", res["token"]);
+          localStorage.setItem("USER_ID", res["userId"]);
+          localStorage.setItem("USER_EMAIL", res["email"]);
+  
+          if(res["success"]) {
+            this.router.navigateByUrl('profile'); 
+          }
+        },(error) => {
+          this.incorrectCreds = true;
+        })  
       } else {
         return;
       }
