@@ -18,6 +18,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ContactComponent } from './home/contact/contact.component';
 
 
 
@@ -35,7 +36,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     CheckoutComponent,
     HomeComponent,
     ProfileComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
