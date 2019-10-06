@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OakxlComponent } from './oakxl.component';
+import { ProductPageComponent } from './product-page.component';
 
-describe('OakxlComponent', () => {
-  let component: OakxlComponent;
-  let fixture: ComponentFixture<OakxlComponent>;
+describe('ProductpageComponent', () => {
+  let component: ProductPageComponent;
+  let fixture: ComponentFixture<ProductPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OakxlComponent ]
+      declarations: [ ProductPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OakxlComponent);
+    fixture = TestBed.createComponent(ProductPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
