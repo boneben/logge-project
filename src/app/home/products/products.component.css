@@ -19,3 +19,32 @@ z-index: 1;}
     top: 0px;
     z-index: 0;
 }
+.bgTransparent{
+  background-color: rgba(255, 255, 255, 0.336);
+}
+
+@media (max-width: 1200px) {
+  .productImg {
+      width: 290px;
+    
+      
+  }
+}
+
+@media (max-width: 992px) {
+  .productImg {
+    width: 210px;
+  
+    
+}
+}
+
+@media (max-width: 576px) {
+
+  .productImg {
+    width: 257px;
+  
+    margin-bottom: 50px;
+}  
+  
+}
