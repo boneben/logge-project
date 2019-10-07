@@ -1,6 +1,167 @@
-<p>profile works!</p>
-dasdasdasd
-asdasd
-asd
-asdasdsda
-sd
+<div class="container-fluid mittkonto">
+    <div class="container py-5 ">
+    <h1 class="display-4 ">Mitt konto</h1>
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos optio quidem eius tempore nostrum, dicta recusandae fuga, illum eligendi magni repellendus exercitationem et! Laborum, consequuntur vel adipisci eos possimus ut.</p>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="container py-5">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="profile" aria-selected="true">Account information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">Recent orders</a>
+            </li>
+
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="home-tab">
+
+            
+
+            <form [formGroup]="signupForm" (submit)="signup()" class="needs-validation" novalidate class="my-5">
+                          <h5>User Information</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">E-post</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" formControlName="email" required>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Lösenord</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" formControlName="password" required>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="birthdate">Date of birth</label>
+                                    <input type="date" class="form-control" formControlName="birthDate">
+                                  </div>
+                                </div>
+
+                                <h5>Billing address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Adress</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="billingAddress" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">Stad</label>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="billingCity" required>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="billingCountry" required>
+                                        <option value=""></option>
+                                        <option value="volvo">Sweden</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Postadress</label>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="billingPostalNumber" required>
+                                  </div>
+                                </div>
+
+                                <h5>Shipping address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Adress</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="shippingAddress" required>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">Stad</label>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="shippingCity" required>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="shippingCountry" required>
+                                        <option value=""></option>
+                                        <option value="volvo">Sweden</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Postadress</label>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="shippingPostalNumber" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                                    <label class="form-check-label" for="gridCheck">
+                                        Vi använder informationen för att skräddarsy din upplevelse hos oss.
+                                    </label>
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary bt-login">Redigera</button>
+                                <div *ngIf="error" class="warning">
+                                    An account with that emailaddress already exists.
+                                </div>
+
+                      </form>
+            
+              
+
+            </div>
+
+
+
+            <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="profile-tab">
+
+                <table class="table my-5">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Produkt</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Antal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Lorem Ipsum</td>
+                        <td>12:42 8/7/2019</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                          <th scope="row">2</th>
+                          <td>Lorem Ipsum</td>
+                          <td>12:42 8/5/2019</td>
+                          <td>1</td>
+                      </tr>
+                      <tr>
+                          <th scope="row">3</th>
+                          <td>Lorem Ipsum</td>
+                          <td>12:42 8/5/2019</td>
+                          <td>1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+
+            </div>
+            
+          </div>
+
+    </div>
+</div>
