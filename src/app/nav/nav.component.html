@@ -20,14 +20,29 @@
         <li class="nav-item">
           <a class="nav-link" (click)="scrollToFooter()">Contact</a>
         </li>
-        <li class="nav-item ml-lg-5">
-          <a href="" data-toggle="modal" data-target="#login"><i
-            class="nav-link material-icons-outlined">account_circle</i></a>
-        </li>
+        <div *ngIf="!_auth.isLoggedIn()">
+          <li class="nav-item ml-lg-5">
+            <a href="" data-toggle="modal" data-target="#login">
+              <i class="nav-link material-icons-outlined">account_circle</i>
+            </a>
+          </li>
+        </div>
+        <div *ngIf="_auth.isLoggedIn()">
+          <li class="nav-item ml-lg-5">
+            <a routerLink="profile">
+              <i class="nav-link material-icons-outlined">account_circle</i>
+            </a>
+          </li>
+        </div>
         <li class="nav-item">
           <a routerLink='cart' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><i
             [ngClass]="{'material-icons-outlined': !cart?.length }"  class="nav-link material-icons">shopping_cart</i></a>
         </li>
+        <div *ngIf="_auth.isLoggedIn()">
+          <li class="nav-item ml-lg-5">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+       </div>
       </ul>
     </div>
   </div>
@@ -38,94 +53,137 @@
 
 <!-- The Modal LOGIN AND REGISTRATION -->
 <div class="modal fade" id="login">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Logga in</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-
-        <form action="account.html" class="needs-validation" novalidate>
-          <div class="form-group">
-            <label for="exampleInputEmail1">E-post</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="E-post" required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Lösenord</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Lösenord" required>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Kom ihåg mig</label>
-          </div>
-
-          <button type="submit" class="btn btn-primary mt-3 bt-login">Logga in</button> <span style="display: inline">
-            <p class="mt-3">Är du ny kund ? <a data-toggle="collapse" href="#signIn" role="button" aria-expanded="false"
-                aria-controls="signIn"> Registrera dig nu</a> eller <a href="#"> glömt lösenordet? </a></p>
-          </span>
-        </form>
-        <!-- Registration -->
-
-        <div Class="collapse" id="signIn">
-          <h4 class="modal-title pb-3">Registrera</h4>
-          <form class="needs-validation" novalidate>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">E-post</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4">Lösenord</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6 ">
-                <label for="inputAddress">Adress</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
-              </div>
-
-
-              <div class="form-group col-md-6">
-                <label for="inputAddress2">Adress 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Adress 2" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">Stad</label>
-                <input type="text" class="form-control" id="inputCity" required>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">Ort</label>
-                <select id="inputState" class="form-control" required>
-                  <option value=""></option>
-                  <option value="volvo">Stockholm</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">Postadress</label>
-                <input type="text" class="form-control" id="inputZip" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                <label class="form-check-label" for="gridCheck">
-                  Vi använder informationen för att skräddarsy din upplevelse hos oss.
-                </label>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary bt-login">Registrera</button>
-          </form>
+    <div class="modal-dialog modal-lg" id="login-dialog">
+      <div class="modal-content" id="login-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header" id="login-header">
+          <h3 class="modal-title">Login</h3>
+          <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
         </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+                
+                <form class="needs-validation" [formGroup]="loginForm" (submit)="login()" novalidate>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">E-mail</label>
+                          <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" required>
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Lösenord</label>
+                          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                        </div>
+                        <div *ngIf="incorrectCreds" class="warning">Wrong email or password!</div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                       
+                        <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary mt-3 bt-login">Login</button> <span style="display: inline"><p class="mt-3">Are you a new to our site ? <a  data-toggle="collapse" href="#signIn" role="button" aria-expanded="false" aria-controls="signIn"> Register an account</a> or have you <a href="#"> forgotten your password? </a></p></span>
+                        
+                </form>
+                  <!-- Registration -->
+                
+              <div Class="collapse" id="signIn">
+                        <h3 class="modal-title pb-3">Register</h3>
+                        <form [formGroup]="signupForm" (submit)="signup()" class="needs-validation" novalidate>
+                          <h5>User Information</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">E-mail</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-mail" formControlName="email" required>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" formControlName="password" required>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="firstname">Given name</label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="lastname">Surname</label>
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="birthdate">Date of birth</label>
+                                    <input type="date" class="form-control" formControlName="birthDate">
+                                  </div>
+                                </div>
+
+                                <h5>Billing address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" formControlName="billingAddress" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="billingCity" required>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="billingCountry" required>
+                                        <option value=""></option>
+                                        <option value="volvo">Sweden</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Zip-code</label>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="billingPostalNumber" required>
+                                  </div>
+                                </div>
+
+                                <h5>Shipping address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" formControlName="shippingAddress" required>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" formControlName="shippingCity" required>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <select id="inputCountry" class="form-control" formControlName="shippingCountry" required>
+                                        <option value=""></option>
+                                        <option value="volvo">Sweden</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Zip-code</label>
+                                    <input type="text" class="form-control" id="inputZip" formControlName="shippingPostalNumber" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                                    <label class="form-check-label" for="gridCheck">
+                                        I agree to the <a href="#">Terms & Conditions</a> and the <a href="#">Private Policy</a>.
+                                    </label>
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary bt-login" [disabled]="!signupForm.valid">Register</button>
+                                <div *ngIf="error" class="warning">
+                                    An account with that e-mailaddress already exists.
+                                </div>
+
+                      </form>
+                </div>
         <!-- Registration End -->
       </div>
 
@@ -149,6 +207,46 @@
       <!--Body-->
       <div class="modal-body">
 
+<<<<<<< HEAD
+=======
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Product 1</td>
+              <td>100$</td>
+              <td><input type="number" id="tentacles" name="tentacles"
+                min="10" max="100"></td>
+              <td><a><i class="fas fa-times"></i></a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Product 2</td>
+              <td>100$</td>
+              <td><input type="number" id="tentacles" name="tentacles"
+                min="10" max="100"></td>
+              <td><a><i class="fas fa-times"></i></a></td>
+            </tr>
+            <tr class="total">
+              <th scope="row">5</th>
+              <td>Total</td>
+              <td>100$</td>
+              <td>400$</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+>>>>>>> master
       </div>
       <!--Footer-->
       <div class="modal-footer">
