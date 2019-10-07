@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { element, $ } from 'protractor';
+import { element } from 'protractor';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Event, $ } from 'jquery';
 
 @Component({
   selector: 'app-nav',
@@ -30,6 +31,7 @@ export class NavComponent implements OnInit {
   }
 
 
+
   ngOnInit() {
     
     this.loginForm = this.formBuilder.group({
@@ -55,6 +57,12 @@ export class NavComponent implements OnInit {
 
   }
 
+  closeModal() {
+    let modal = document.getElementById('closeModal')
+
+    modal.click();
+  }
+
   login() {
     this.isSubmittedLogin = true;
 
@@ -69,7 +77,8 @@ export class NavComponent implements OnInit {
         localStorage.setItem("USER_EMAIL", res["email"]);
 
         if(res["success"]) {
-          this.router.navigateByUrl('profile'); 
+          this.closeModal();
+          this.router.navigateByUrl('profile');
         }
       },(error) => {
         this.incorrectCreds = true;
