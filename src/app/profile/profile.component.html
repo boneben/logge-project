@@ -1,6 +1,6 @@
 <div class="container-fluid mittkonto">
     <div class="container py-5 ">
-    <h1 class="display-4 ">Mitt konto</h1>
+    <h1 class="display-4 ">My Account</h1>
     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos optio quidem eius tempore nostrum, dicta recusandae fuga, illum eligendi magni repellendus exercitationem et! Laborum, consequuntur vel adipisci eos possimus ut.</p>
     </div>
 </div>
@@ -23,100 +23,87 @@
 
             
 
-            <form [formGroup]="signupForm" (submit)="signup()" class="needs-validation" novalidate class="my-5">
+            <form class="needs-validation" novalidate class="my-5">
                           <h5>User Information</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
-                                    <label for="inputEmail4">E-post</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" formControlName="email" required>
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" required>
                                   </div>
                                   <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Lösenord</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" formControlName="password" required>
+                                    <label for="inputPassword4">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" required>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="firstname">Firstname</label>
-                                    <input type="text" class="form-control" formControlName="firstName">
+                                    <input type="text" class="form-control">
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="lastname">Lastname</label>
-                                    <input type="text" class="form-control" formControlName="lastName">
+                                    <input type="text" class="form-control">
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="birthdate">Date of birth</label>
-                                    <input type="date" class="form-control" formControlName="birthDate">
+                                    <input type="date" class="form-control">
                                   </div>
                                 </div>
 
                                 <h5>Billing address</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
-                                    <label for="inputAddress">Adress</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="billingAddress" required>
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
-                                    <label for="inputCity">Stad</label>
-                                    <input type="text" class="form-control" id="inputCity" formControlName="billingCity" required>
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" required>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" formControlName="billingCountry" required>
+                                    <select id="inputCountry" class="form-control" required>
                                         <option value=""></option>
-                                        <option value="volvo">Sweden</option>
+                                        <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
-                                    <label for="inputZip">Postadress</label>
-                                    <input type="text" class="form-control" id="inputZip" formControlName="billingPostalNumber" required>
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" required>
                                   </div>
                                 </div>
 
                                 <h5>Shipping address</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
-                                    <label for="inputAddress">Adress</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" formControlName="shippingAddress" required>
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
-                                    <label for="inputCity">Stad</label>
-                                    <input type="text" class="form-control" id="inputCity" formControlName="shippingCity" required>
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" required>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" formControlName="shippingCountry" required>
+                                    <select id="inputCountry" class="form-control" required>
                                         <option value=""></option>
-                                        <option value="volvo">Sweden</option>
+                                        <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
-                                    <label for="inputZip">Postadress</label>
-                                    <input type="text" class="form-control" id="inputZip" formControlName="shippingPostalNumber" required>
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" required>
                                   </div>
                                 </div>
-
-                                <div class="form-group">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                                    <label class="form-check-label" for="gridCheck">
-                                        Vi använder informationen för att skräddarsy din upplevelse hos oss.
-                                    </label>
-                                  </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary bt-login">Redigera</button>
-                                <div *ngIf="error" class="warning">
-                                    An account with that emailaddress already exists.
-                                </div>
-
+                                <button type="submit" class="btn btn-primary bt-login">Edit</button>
                       </form>
             
               
