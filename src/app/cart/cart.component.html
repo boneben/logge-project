@@ -1,0 +1,42 @@
+<div *ngIf="items?.length > 0 else emptycart" class="container py-5">
+    <h1 class="mb-5 text-center">Your Cart</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <th>{{ item.product._id }}</th>
+                <td>{{ item.product.name }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.product.price * item.quantity }}</td>
+                <td><a (click)="remove(item.product._id)"><i class="fas fa-times"></i></a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total:${{ total }} </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row text-center">
+        <div class="col">
+            <a routerLink='../productpage' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="btn btn-primary">Back to Products</a>
+        </div>
+    </div>
+</div>
+
+<ng-template #emptycart>
+    <div class="container py-5 text-center">No products in cart...</div>
+</ng-template>

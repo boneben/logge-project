@@ -15,7 +15,7 @@
                             <div class="input-group-text" id="basic-addon1">Antal</div>
                         </div>
                         <input type="text" class="form-control mr-5 input-productpage" aria-label="antal" aria-describedby="basic-addon1">
-                        <a href="" class="btn btn-primary mx-5 btn-productpage">Lägg till i varukorg</a>
+                        <a [routerLink]="['/cart', { id:currentProduct._id }]" class="btn btn-primary mx-5 btn-productpage">Buy now</a>
                     </div>
                 </div>
             </div>
