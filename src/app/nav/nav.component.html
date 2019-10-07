@@ -35,8 +35,8 @@
           </li>
         </div>
         <li class="nav-item">
-          <a href="" data-toggle="modal" data-target="#modalCart"><i
-              class="nav-link material-icons-outlined">shopping_cart</i></a>
+          <a routerLink='cart' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><i
+            [ngClass]="{'material-icons-outlined': !cart?.length }"  class="nav-link material-icons">shopping_cart</i></a>
         </li>
         <div *ngIf="_auth.isLoggedIn()">
           <li class="nav-item ml-lg-5">
@@ -47,6 +47,9 @@
     </div>
   </div>
 </nav>
+
+
+
 
 <!-- The Modal LOGIN AND REGISTRATION -->
 <div class="modal fade" id="login">
@@ -204,6 +207,8 @@
       <!--Body-->
       <div class="modal-body">
 
+<<<<<<< HEAD
+=======
         <table class="table table-hover">
           <thead>
             <tr>
@@ -241,6 +246,7 @@
           </tbody>
         </table>
 
+>>>>>>> master
       </div>
       <!--Footer-->
       <div class="modal-footer">

@@ -18,6 +18,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -35,7 +36,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     CheckoutComponent,
     HomeComponent,
     ProfileComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,10 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    CartComponent,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
