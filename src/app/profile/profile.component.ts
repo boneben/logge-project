@@ -20,8 +20,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     this.isLoggedIn();
-    this.getUserInfo();
 
+    this._auth.getUser().subscribe((res) => {
+      this.user = res;
+      this.editForm.patchValue(this.user)
+      this.editForm.patchValue({password: ''})
+    })
     this.editForm = this.formBuilder.group({
       'firstName': [''],
       'lastName': [''],
@@ -43,16 +47,14 @@ export class ProfileComponent implements OnInit {
     this._auth.isLoggedIn();
   }
 
-  getUserInfo() {
-    this._auth.getUser().subscribe(data => {
-      this.user = data;
-      this.editForm.controls;
-     })
-  }
-
 
   cancel() {
     this.editingInfo = false;
+    this._auth.getUser().subscribe((res) => {
+      this.user = res
+      this.editForm.patchValue(this.user)
+      this.editForm.patchValue({password: ''})
+    })
   }
 
   updateInfo() {
@@ -62,7 +64,11 @@ export class ProfileComponent implements OnInit {
 
       if(success) {
         this.editingInfo = false;
-        this.getUserInfo();
+        this._auth.getUser().subscribe((res) => {
+          this.user = res;
+          this.editForm.patchValue(this.user);
+          this.editForm.patchValue({password: ''})
+        })
       }
     })
   }
