@@ -33,7 +33,7 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder={{user.email}} disabled>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder={{user?.email}} disabled>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputPassword4">Password</label>
@@ -43,18 +43,18 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="firstname">Firstname</label>
-                                    <input type="text" class="form-control" placeholder={{user.firstName}} disabled>
+                                    <input type="text" class="form-control" placeholder={{user?.firstName}} disabled>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="lastname">Lastname</label>
-                                    <input type="text" class="form-control" placeholder={{user.lastName}} disabled>
+                                    <input type="text" class="form-control" placeholder={{user?.lastName}} disabled>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="birthdate">Date of birth</label>
-                                    <input type="text" class="form-control" placeholder={{user.birthDate}} disabled>
+                                    <input type="text" class="form-control" placeholder={{user?.birthDate}} disabled>
                                   </div>
                                 </div>
 
@@ -62,22 +62,22 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user.billingAddress}} disabled>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user?.billingAddress}} disabled>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" placeholder={{user.billingCity}} disabled>
+                                    <input type="text" class="form-control" id="inputCity" placeholder={{user?.billingCity}} disabled>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user.billingCountry}} disabled>
+                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user?.billingCountry}} disabled>
                                   </div>
                                   <div class="form-group col-md-2">
                                     <label for="inputZip">Postal number</label>
-                                    <input type="text" class="form-control" id="inputZip" placeholder={{user.billingPostalNumber}} disabled>
+                                    <input type="text" class="form-control" id="inputZip" placeholder={{user?.billingPostalNumber}} disabled>
                                   </div>
                                 </div>
 
@@ -85,53 +85,53 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user.shippingAddress}} disabled>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user?.shippingAddress}} disabled>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" placeholder={{user.shippingCity}} disabled>
+                                    <input type="text" class="form-control" id="inputCity" placeholder={{user?.shippingCity}} disabled>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user.shippingCountry}} disabled> 
+                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user?.shippingCountry}} disabled> 
                                   </div>
                                   <div class="form-group col-md-2">
                                     <label for="inputZip">Postal number</label>
-                                    <input type="text" class="form-control" id="inputZip" placeholder={{user.shippingPostalNumber}} disabled>
+                                    <input type="text" class="form-control" id="inputZip" placeholder={{user?.shippingPostalNumber}} disabled>
                                   </div>
                                 </div>
                       </form>
 
                       <!-- EDIT FORM -->
-                      <form [formGroup]="editForm" novalidate class="my-5" *ngIf="editingInfo">
+                      <form [formGroup]="editForm" (submit)="updateInfo()" novalidate class="my-5" *ngIf="editingInfo">
                                   <h5>My Account</h5>
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="inputEmail4">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail4" placeholder={{user.email}} >
+                                            <input type="email" class="form-control" id="inputEmail4" placeholder={{user?.email}} formControlName="email" required>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <label for="inputPassword4">Password</label>
-                                            <input type="password" class="form-control" id="inputPassword4" placeholder="***********" >
+                                            <input type="password" class="form-control" id="inputPassword4" placeholder="***********" formControlName="password">
                                           </div>
                                         </div>
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="firstname">Firstname</label>
-                                            <input type="text" class="form-control" placeholder={{user.firstName}} >
+                                            <input type="text" class="form-control" placeholder={{user?.firstName}} formControlName="firstName" required>
                                           </div>
                                           <div class="form-group col-md-6">
                                             <label for="lastname">Lastname</label>
-                                            <input type="text" class="form-control" placeholder={{user.lastName}} >
+                                            <input type="text" class="form-control" placeholder={{user?.lastName}} formControlName="lastName" required>
                                           </div>
                                         </div>
         
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="birthdate">Date of birth</label>
-                                            <input type="text" class="form-control" placeholder={{user.birthDate}} >
+                                            <input type="text" class="form-control" placeholder={{user?.birthDate}} disabled>
                                           </div>
                                         </div>
         
@@ -139,22 +139,22 @@
                                         <div class="form-row">
                                           <div class="form-group col-md-6 ">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user.billingAddress}} >
+                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user?.billingAddress}} formControlName="billingAddress" required>
                                           </div>
                                         </div>
         
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity" placeholder={{user.billingCity}} >
+                                            <input type="text" class="form-control" id="inputCity" placeholder={{user?.billingCity}} formControlName="billingCity" required>
                                           </div>
                                           <div class="form-group col-md-4">
                                             <label for="inputCountry">Country</label>
-                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user.billingCountry}} >
+                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user?.billingCountry}} formControlName="billingCountry" required>
                                           </div>
                                           <div class="form-group col-md-2">
                                             <label for="inputZip">Postal number</label>
-                                            <input type="text" class="form-control" id="inputZip" placeholder={{user.billingPostalNumber}} >
+                                            <input type="text" class="form-control" id="inputZip" placeholder={{user?.billingPostalNumber}} formControlName="billingPostalNumber" required>
                                           </div>
                                         </div>
         
@@ -162,25 +162,25 @@
                                         <div class="form-row">
                                           <div class="form-group col-md-6 ">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user.shippingAddress}} >
+                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user?.shippingAddress}} formControlName="shippingAddress" required>
                                           </div>
                                         </div>
                                         <div class="form-row">
                                           <div class="form-group col-md-6">
                                             <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity" placeholder={{user.shippingCity}} >
+                                            <input type="text" class="form-control" id="inputCity" placeholder={{user?.shippingCity}} formControlName="shippingCity" required>
                                           </div>
                                           <div class="form-group col-md-4">
                                             <label for="inputCountry">Country</label>
-                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user.shippingCountry}} > 
+                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user?.shippingCountry}} formControlName="shippingCountry" required> 
                                           </div>
                                           <div class="form-group col-md-2">
                                             <label for="inputZip">Postal number</label>
-                                            <input type="text" class="form-control" id="inputZip" placeholder={{user.shippingPostalNumber}} >
+                                            <input type="text" class="form-control" id="inputZip" placeholder={{user?.shippingPostalNumber}} formControlName="shippingPostalNumber" required>
                                           </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary bt-login" (click)="editingInfo = false">Save</button>
-                                        <button type="submit" class="btn btn-primary bt-login float-right" (click)="editingInfo = false">Cancel</button>
+                                        <button type="submit" class="btn btn-primary bt-login">Save</button>
+                                        <button type="button" class="btn btn-primary bt-login float-right" (click)="cancel()">Cancel</button>
                               </form>
             
               
