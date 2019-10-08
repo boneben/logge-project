@@ -97,4 +97,25 @@ export class CartComponent implements OnInit {
 		this.productService.clearCart();
 	}
 
+	updateQuantity(quantity: any, id: string) {
+		let cart: any = JSON.parse(localStorage.getItem('cart'));
+		for (var i = 0; i < cart.length; i++) {
+			let item: Item = JSON.parse(cart[i]);
+			if (item.product._id == id) {
+				item.quantity = quantity;
+				cart[i] = JSON.stringify(item);
+				localStorage.setItem("cart", JSON.stringify(cart));
+				break;
+			}
+		}
+		localStorage.setItem("cart", JSON.stringify(cart));
+		this.loadCart();
+	}
+
+	onChange(quantity, id) {
+		this.updateQuantity(quantity.target.value, id);
+	}
+
+
+
 }
