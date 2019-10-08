@@ -38,7 +38,7 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     ProfileComponent,
     ProductDetailComponent,
-    ContactComponent
+    ContactComponent,
     CartComponent
   ],
   imports: [
