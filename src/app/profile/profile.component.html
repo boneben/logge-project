@@ -1,6 +1,231 @@
-<p>profile works!</p>
-dasdasdasd
-asdasd
-asd
-asdasdsda
-sd
+<div class="container-fluid mittkonto">
+    <div class="container py-5 ">
+    <h1 class="display-4 ">My Account</h1>
+    <p class="lead">From your account page, you can view your latest orders, manage your shipping and billing addresses and edit your passwords and account details.</p>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="container py-5">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="profile" aria-selected="true">Account information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"> Latest orders</a>
+            </li>
+
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="home-tab">
+
+            
+              <!-- USER INFO -->
+            <form novalidate class="my-5" *ngIf="!editingInfo">   
+                          <h5>My Account</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary bt-login float-right" (click)="editingInfo = true">Edit</button>
+                                    </div>
+                                </div>      
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder={{user?.email}} disabled>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="***********" disabled>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" class="form-control" placeholder={{user?.firstName}} disabled>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" class="form-control" placeholder={{user?.lastName}} disabled>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="birthdate">Date of birth</label>
+                                    <input type="text" class="form-control" placeholder={{user?.birthDate}} disabled>
+                                  </div>
+                                </div>
+
+                                <h5>Billing address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user?.billingAddress}} disabled>
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" placeholder={{user?.billingCity}} disabled>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user?.billingCountry}} disabled>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" placeholder={{user?.billingPostalNumber}} disabled>
+                                  </div>
+                                </div>
+
+                                <h5>Shipping address</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6 ">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder={{user?.shippingAddress}} disabled>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity" placeholder={{user?.shippingCity}} disabled>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="inputCountry">Country</label>
+                                    <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user?.shippingCountry}} disabled> 
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" placeholder={{user?.shippingPostalNumber}} disabled>
+                                  </div>
+                                </div>
+                      </form>
+
+                      <!-- EDIT FORM -->
+                      <form [formGroup]="editForm" (submit)="updateInfo()" novalidate class="my-5" *ngIf="editingInfo">
+                                  <h5>My Account</h5>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail4" placeholder={{user?.email}} formControlName="email" required>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Password</label>
+                                            <input type="password" class="form-control" id="inputPassword4" placeholder="***********" formControlName="password">
+                                          </div>
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="firstname">Firstname</label>
+                                            <input type="text" class="form-control" placeholder={{user?.firstName}} formControlName="firstName" required>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="lastname">Lastname</label>
+                                            <input type="text" class="form-control" placeholder={{user?.lastName}} formControlName="lastName" required>
+                                          </div>
+                                        </div>
+        
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="birthdate">Date of birth</label>
+                                            <input type="text" class="form-control" placeholder={{user?.birthDate}} disabled>
+                                          </div>
+                                        </div>
+        
+                                        <h5>Billing address</h5>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6 ">
+                                            <label for="inputAddress">Address</label>
+                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user?.billingAddress}} formControlName="billingAddress" required>
+                                          </div>
+                                        </div>
+        
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputCity">City</label>
+                                            <input type="text" class="form-control" id="inputCity" placeholder={{user?.billingCity}} formControlName="billingCity" required>
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="inputCountry">Country</label>
+                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder={{user?.billingCountry}} formControlName="billingCountry" required>
+                                          </div>
+                                          <div class="form-group col-md-2">
+                                            <label for="inputZip">Postal number</label>
+                                            <input type="text" class="form-control" id="inputZip" placeholder={{user?.billingPostalNumber}} formControlName="billingPostalNumber" required>
+                                          </div>
+                                        </div>
+        
+                                        <h5>Shipping address</h5>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6 ">
+                                            <label for="inputAddress">Address</label>
+                                            <input type="text" class="form-control" id="inputAddress" placeholder={{user?.shippingAddress}} formControlName="shippingAddress" required>
+                                          </div>
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputCity">City</label>
+                                            <input type="text" class="form-control" id="inputCity" placeholder={{user?.shippingCity}} formControlName="shippingCity" required>
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="inputCountry">Country</label>
+                                            <input type="text" class="form-control" name="inputCountry" id="inputCountry2" placeholder={{user?.shippingCountry}} formControlName="shippingCountry" required> 
+                                          </div>
+                                          <div class="form-group col-md-2">
+                                            <label for="inputZip">Postal number</label>
+                                            <input type="text" class="form-control" id="inputZip" placeholder={{user?.shippingPostalNumber}} formControlName="shippingPostalNumber" required>
+                                          </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary bt-login">Save</button>
+                                        <button type="button" class="btn btn-primary bt-login float-right" (click)="cancel()">Cancel</button>
+                              </form>
+            
+              
+
+            </div>
+
+
+
+            <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="profile-tab">
+
+                <table class="table my-5">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Produkt</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Antal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Lorem Ipsum</td>
+                        <td>12:42 8/7/2019</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                          <th scope="row">2</th>
+                          <td>Lorem Ipsum</td>
+                          <td>12:42 8/5/2019</td>
+                          <td>1</td>
+                      </tr>
+                      <tr>
+                          <th scope="row">3</th>
+                          <td>Lorem Ipsum</td>
+                          <td>12:42 8/5/2019</td>
+                          <td>1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+
+            </div>
+            
+          </div>
+
+    </div>
+</div>
