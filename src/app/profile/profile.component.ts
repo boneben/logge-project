@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
     this.isLoggedIn();
     this._auth.getUser().subscribe(data => {
      this.user = data;
+     console.log(this.user)
     })
 
     this.editForm = this.formBuilder.group({
