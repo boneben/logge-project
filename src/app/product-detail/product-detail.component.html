@@ -11,11 +11,7 @@
                         <h4>${{ currentProduct.price }}</h4>
                     <p class="pt-3">{{ currentProduct.description }}</p>
                     <div class="input-group mt-5">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text" id="basic-addon1">Antal</div>
-                        </div>
-                        <input type="text" class="form-control mr-5 input-productpage" aria-label="antal" aria-describedby="basic-addon1">
-                        <a [routerLink]="['/cart', { id:currentProduct._id }]" class="btn btn-primary mx-5 btn-productpage">Add to cart</a>
+                        <a [routerLink]="['/cart', { id:currentProduct._id }]" class="btn btn-primary btn-productpage">Add to cart</a>
                     </div>
                 </div>
             </div>
