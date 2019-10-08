@@ -15,16 +15,18 @@
                 </div>
             </div>
             <div class="row">
-                <div *ngFor="let product of products" class="col-md-4 col-lg-3">
-                    <div class="card mb-4 pt-3">
-                        <img width="100%" src={{product.img}} alt="Image not found">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
-                            <p>Price: ${{ product.price }}</p>
-                            <a class="btn btn-primary" [routerLink]="['/productpage', product._id]">Read more</a>
-                        </div>
-                    </div>
+
+                <div *ngFor="let product of products" class="col-md-4">
+                        
+                        <div class="card my-3 text-center">
+                                <a [routerLink]="['/productpage', product._id]"><img  src={{product.img}} alt="Image not found" class="mt-5"></a>
+                                <div class="card-body">
+                                <a [routerLink]="['/productpage', product._id]"><h5 class="card-title text-center">{{ product.name }}</h5></a>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="price">Price: ${{ product.price }}</p>
+                                </div>
+                         </div>            
+                    
                 </div>
             </div>
         </div>
