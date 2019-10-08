@@ -20,7 +20,7 @@
                         <img width="100%" src={{product.img}} alt="Image not found">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ product.name }}</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, quod?</p>
+                            <p class="card-text">{{ product.description }}</p>
                             <p>Price: ${{ product.price }}</p>
                             <a class="btn btn-primary" [routerLink]="['/productpage', product._id]">Read more</a>
                         </div>
