@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router'
+import { ProductService } from '../product.service';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -12,7 +13,7 @@ export class ProductDetailComponent implements OnInit {
   productId: string;
   currentProduct: Object;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit() {
 
@@ -21,8 +22,8 @@ export class ProductDetailComponent implements OnInit {
       this.productId = params.get('id')
     })
 
-    //Hämtar produktdata med nID
-    this.http.get('http://localhost:3000/products/' + this.productId).subscribe(data => {
+    //Hämtar produktdata med productId
+    this.productService.findOneProduct(this.productId).subscribe(data => {
       this.currentProduct = data['product']
     })
 

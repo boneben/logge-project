@@ -1,0 +1,51 @@
+<div *ngIf="items?.length > 0 else emptycart" class="container py-5 vh-100">
+    <h1 class="mb-5 text-center">Your Cart</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{ item.product.name }}</td>
+                <td>${{ item.product.price }}</td>
+                <td><select (change)="onChange($event, item.product._id)" class="form-control">
+                    <option value="">{{ item.quantity }}</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                </select></td>
+                <td>${{ item.product.price * item.quantity }}</td>
+                <td><a (click)="remove(item.product._id)"><i class="fas fa-times"></i></a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total: ${{ total }} </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row text-center">
+        <div class="col">
+            <a routerLink='../productpage' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="btn btn-primary">Back to Products</a>
+        </div>
+    </div>
+</div>
+
+<ng-template #emptycart>
+    <div class="container py-5 text-center">No products in cart...</div>
+</ng-template>

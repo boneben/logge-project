@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ContactComponent } from './home/contact/contact.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -38,6 +39,7 @@ import { ContactComponent } from './home/contact/contact.component';
     ProfileComponent,
     ProductDetailComponent,
     ContactComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,10 @@ import { ContactComponent } from './home/contact/contact.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    CartComponent,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

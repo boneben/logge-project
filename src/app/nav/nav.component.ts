@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { element, $ } from 'protractor';
+import { ProductService } from '../product.service'
+import { Item } from '../item';
+import { CartComponent } from '../cart/cart.component'
+import { Source } from 'webpack-sources';
+import { observable, Observable, Subscription } from 'rxjs';
+import { element } from 'protractor';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -11,6 +16,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class NavComponent implements OnInit {
   
+  cart: any[] = [];
+  subscription: Subscription
+  testCart: Array<any> = [];
 
   loginForm: any;
   isSubmittedLogin: boolean;
@@ -20,7 +28,16 @@ export class NavComponent implements OnInit {
   isSubmitted: boolean = false;
   error: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private _auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private _auth: AuthService, private productService: ProductService) {
+    this.subscription = this.productService.getCart().subscribe(subscriber => {
+      if(subscriber) {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart.push(subscriber)
+      } else {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      }
+    })
+   }
 
   scrollToFooter() {
     window.scrollTo({
@@ -28,6 +45,7 @@ export class NavComponent implements OnInit {
       behavior: "smooth"
     })
   }
+
 
 
   ngOnInit() {
@@ -55,6 +73,12 @@ export class NavComponent implements OnInit {
 
   }
 
+  closeModal() {
+    let modal = document.getElementById('closeModal')
+
+    modal.click();
+  }
+
   login() {
     this.isSubmittedLogin = true;
 
@@ -69,7 +93,8 @@ export class NavComponent implements OnInit {
         localStorage.setItem("USER_EMAIL", res["email"]);
 
         if(res["success"]) {
-          this.router.navigateByUrl('profile'); 
+          this.router.navigateByUrl('profile');
+          this.closeModal();
         }
       },(error) => {
         this.incorrectCreds = true;
@@ -93,6 +118,7 @@ export class NavComponent implements OnInit {
   
           if(res["success"]) {
             this.router.navigateByUrl('profile'); 
+            this.closeModal();
           }
         },(error) => {
           this.incorrectCreds = true;
@@ -107,5 +133,10 @@ export class NavComponent implements OnInit {
     this._auth.logout();
     this.router.navigateByUrl('/');
   }
+  
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+}
 
 }
