@@ -2,25 +2,10 @@ footer{
     height: 40px;
 }
 
-/* #logicon {
-    position: absolute;
-    right: -300px;
-    bottom: 0px;
-    height: 300px;
-    overflow: hidden;
-    z-index: 0;
+.footer span{
+    font-size: 11px;
 
 }
-#logicon img {
-
-    height: 500px;
-    width: 500px;
-    overflow: hidden;
-
-    z-index: 0;
-} */
-
-
 .fa-facebook {
     color: #3b5998;
 }
@@ -44,3 +29,10 @@ footer{
 }
 
 .footer .bg-dark{z-index: 2;}
+
+@media (max-width: 576px) {
+.footer a{
+    font-size: 11px;
+}
+
+}

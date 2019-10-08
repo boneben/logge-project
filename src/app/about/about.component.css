@@ -1,0 +1,22 @@
+#bgTrees{
+    background-image: url("../../assets/img/bg/treesfade.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: bottom; 
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+@media (min-width: 768px) {
+
+
+    #bgTrees{
+        background-position: center; 
+
+
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    }
+}
+#logoStanding{
+    /* height: 400px; */
+
+}

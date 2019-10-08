@@ -38,13 +38,28 @@ z-index: 1;}
     
 }
 }
+@media (max-width: 768px) {
+
+  .productImg {
+    width: 350px;
+  
+    margin-bottom: 50px;
+}  
+.card{
+  width: 350px;
+}
+  
+}
 
 @media (max-width: 576px) {
 
   .productImg {
     width: 257px;
   
-    margin-bottom: 50px;
+   
 }  
+.card{
+  width: 257px;
+}
   
 }
