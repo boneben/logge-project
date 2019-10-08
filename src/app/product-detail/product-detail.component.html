@@ -10,6 +10,10 @@
                         <h1>{{ currentProduct.name }}</h1>
                         <h4>${{ currentProduct.price }}</h4>
                     <p class="pt-3">{{ currentProduct.description }}</p>
+                    <p class="pt-1">All our products are carefully crafted with precision and love. We can always guarantee the highest quality
+                        products. We always strive to develop new techniques and tools to increase the excellence of our products. Nothing 
+                        is left to chance.
+                    </p>
                     <div class="input-group mt-5">
                         <a [routerLink]="['/cart', { id:currentProduct._id }]" class="btn btn-primary btn-productpage">Add to cart</a>
                     </div>
