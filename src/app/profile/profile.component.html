@@ -23,33 +23,34 @@
 
             
 
-            <form class="needs-validation" novalidate class="my-5">
-                          <h5>User Information</h5>
+            <form [formGroup]="editForm" novalidate class="my-5" *ngIf="!editingInfo">
+                <button type="submit" class="btn btn-primary bt-login" (click)="editingInfo = true">Edit</button>
+                          <h5>My Account</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" required>
+                                    <input type="email" class="form-control" id="inputEmail4"  disabled>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" required>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" disabled>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="firstname">Firstname</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" disabled>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="lastname">Lastname</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" disabled>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="birthdate">Date of birth</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" disabled>
                                   </div>
                                 </div>
 
@@ -57,25 +58,25 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" disabled>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" required>
+                                    <input type="text" class="form-control" id="inputCity" disabled>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" required>
+                                    <select id="inputCountry" class="form-control" disabled>
                                         <option value=""></option>
                                         <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
                                     <label for="inputZip">Postal number</label>
-                                    <input type="text" class="form-control" id="inputZip" required>
+                                    <input type="text" class="form-control" id="inputZip" disabled>
                                   </div>
                                 </div>
 
@@ -83,27 +84,26 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" disabled>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" required>
+                                    <input type="text" class="form-control" id="inputCity" disabled>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" required>
+                                    <select id="inputCountry" class="form-control" disabled>
                                         <option value=""></option>
                                         <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
                                     <label for="inputZip">Postal number</label>
-                                    <input type="text" class="form-control" id="inputZip" required>
+                                    <input type="text" class="form-control" id="inputZip" disabled>
                                   </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary bt-login">Edit</button>
                       </form>
             
               

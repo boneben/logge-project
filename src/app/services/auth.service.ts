@@ -31,13 +31,13 @@ export class AuthService {
   }
 
   public getUser() {
-    let id = localStorage.getItem("USER_ID");
-    return this.http.get(`${this._apiurl}/user/${id}`);
+    let userId = localStorage.getItem("USER_ID");
+    return this.http.get(`${this._apiurl}/user/${userId}`);
   }
 
   public updateUser(userInfo: User) {
-    let id = localStorage.getItem("USER_ID");
-    return this.http.patch(`${this._apiurl}/user/${id}`, userInfo);
+    let userId = localStorage.getItem("USER_ID");
+    return this.http.patch(`${this._apiurl}/user/${userId}`, userInfo);
   } 
   
 }

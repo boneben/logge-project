@@ -126,6 +126,7 @@ export class NavComponent implements OnInit {
   
           if(res["success"]) {
             this.router.navigateByUrl('profile'); 
+            this.closeModal();
           }
         },(error) => {
           this.incorrectCreds = true;
