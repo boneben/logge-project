@@ -1,7 +1,7 @@
 <div class="container-fluid mittkonto">
     <div class="container py-5 ">
-    <h1 class="display-4 ">My profile</h1>
-    <p class="lead">Here you can edit your information and look at your orders.</p>
+    <h1 class="display-4 ">My Account</h1>
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos optio quidem eius tempore nostrum, dicta recusandae fuga, illum eligendi magni repellendus exercitationem et! Laborum, consequuntur vel adipisci eos possimus ut.</p>
     </div>
 </div>
 
@@ -23,33 +23,33 @@
 
             
 
-            <form [formGroup]="signupForm" (submit)="signup()" class="needs-validation" novalidate class="my-5">
+            <form class="needs-validation" novalidate class="my-5">
                           <h5>User Information</h5>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
-                                    <label for="inputEmail4">E-mail</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-mail" formControlName="email" required>
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="E-post" required>
                                   </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" formControlName="password" required>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Lösenord" required>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
-                                    <label for="firstname">Given Name</label>
-                                    <input type="text" class="form-control" formControlName="firstName">
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" class="form-control">
                                   </div>
                                   <div class="form-group col-md-6">
-                                    <label for="lastname">Surname</label>
-                                    <input type="text" class="form-control" formControlName="lastName">
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" class="form-control">
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="birthdate">Date of birth</label>
-                                    <input type="date" class="form-control" formControlName="birthDate">
+                                    <input type="date" class="form-control">
                                   </div>
                                 </div>
 
@@ -57,25 +57,25 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" formControlName="billingAddress" required>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
                                   </div>
                                 </div>
 
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" formControlName="billingCity" required>
+                                    <input type="text" class="form-control" id="inputCity" required>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" formControlName="billingCountry" required>
+                                    <select id="inputCountry" class="form-control" required>
                                         <option value=""></option>
-                                        <option value="volvo">Sweden</option>
+                                        <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
-                                    <label for="inputZip">Zip-code</label>
-                                    <input type="text" class="form-control" id="inputZip" formControlName="billingPostalNumber" required>
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" required>
                                   </div>
                                 </div>
 
@@ -83,32 +83,27 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6 ">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" formControlName="shippingAddress" required>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" required>
                                   </div>
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" formControlName="shippingCity" required>
+                                    <input type="text" class="form-control" id="inputCity" required>
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputCountry">Country</label>
-                                    <select id="inputCountry" class="form-control" formControlName="shippingCountry" required>
+                                    <select id="inputCountry" class="form-control" required>
                                         <option value=""></option>
-                                        <option value="volvo">Sweden</option>
+                                        <option value="Sweden">Sweden</option>
                                     </select>
                                   </div>
                                   <div class="form-group col-md-2">
-                                    <label for="inputZip">Zip-code</label>
-                                    <input type="text" class="form-control" id="inputZip" formControlName="shippingPostalNumber" required>
+                                    <label for="inputZip">Postal number</label>
+                                    <input type="text" class="form-control" id="inputZip" required>
                                   </div>
                                 </div>
-
-                                <button type="submit" class="btn btn-primary bt-login">Confirm</button>
-                                <div *ngIf="error" class="warning">
-                                    An account with that e-mailaddress already exists.
-                                </div>
-
+                                <button type="submit" class="btn btn-primary bt-login">Edit</button>
                       </form>
             
               

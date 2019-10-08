@@ -8,7 +8,6 @@ import { element } from 'protractor';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Event, $ } from 'jquery';
 
 @Component({
   selector: 'app-nav',
@@ -94,8 +93,8 @@ export class NavComponent implements OnInit {
         localStorage.setItem("USER_EMAIL", res["email"]);
 
         if(res["success"]) {
-          this.closeModal();
           this.router.navigateByUrl('profile');
+          this.closeModal();
         }
       },(error) => {
         this.incorrectCreds = true;
